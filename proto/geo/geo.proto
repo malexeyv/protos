@@ -1,0 +1,35 @@
+syntax="proto3";
+
+package geo;
+
+option go_package="alexeym.geo.v1.geo";
+
+service Geo {
+  rpc AddressSearch(SearchRequest) returns (SearchResponse);
+  rpc GeoCode(GeocodeRequest) returns (GeocodeResponse);
+}
+
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  Address address = 1;
+}
+
+message GeocodeRequest {
+  string lat = 1;
+  string lng = 2;
+}
+
+message GeocodeResponse {
+  Address address = 1;
+}
+
+message Address {
+  string city = 1;
+  string street = 2;
+  string house = 3;
+  string lat = 4;
+  string lon = 5;
+}
